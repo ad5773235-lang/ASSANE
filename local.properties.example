@@ -1,0 +1,4 @@
+# Renommer ce fichier en local.properties et adapter le chemin.
+# Exemple Linux : sdk.dir=/home/username/Android/Sdk
+# Exemple Windows : sdk.dir=C:\\Users\\username\\AppData\\Local\\Android\\Sdk
+sdk.dir=/chemin/vers/Android/Sdk

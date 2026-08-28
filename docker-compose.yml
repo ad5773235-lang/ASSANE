@@ -1,0 +1,37 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-assane}
+      POSTGRES_USER: ${POSTGRES_USER:-assane}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-assane-local-only}
+    volumes:
+      - assane_postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-assane} -d ${POSTGRES_DB:-assane}"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    restart: unless-stopped
+
+  assane-backend:
+    build:
+      context: .
+      dockerfile: docker/backend.Dockerfile
+    env_file:
+      - .env
+    environment:
+      ASSANE_DATABASE_URL: postgresql://${POSTGRES_USER:-assane}:${POSTGRES_PASSWORD:-assane-local-only}@postgres:5432/${POSTGRES_DB:-assane}
+      ASSANE_DATA_DIR: /app/data
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports:
+      - "8000:8000"
+    volumes:
+      - assane_data:/app/data
+    restart: unless-stopped
+
+volumes:
+  assane_data:
+  assane_postgres:

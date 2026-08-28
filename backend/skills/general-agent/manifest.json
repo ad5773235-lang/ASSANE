@@ -1,0 +1,8 @@
+{
+  "id": "general-agent",
+  "version": "1.0.0",
+  "triggers": ["crée", "analyse", "fichier", "projet", "assistant"],
+  "tools": ["list_files", "read_file", "write_file", "run_command"],
+  "runtime": "python",
+  "outputs": ["report", "source_zip"]
+}

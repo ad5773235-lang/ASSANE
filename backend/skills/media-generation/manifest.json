@@ -1,0 +1,8 @@
+{
+  "id": "media-generation",
+  "version": "1.0.0",
+  "triggers": ["image", "audio", "voix", "transcription", "vidéo", "logo"],
+  "tools": ["generate_image", "transcribe_audio"],
+  "runtime": "media",
+  "outputs": ["image", "audio", "transcript"]
+}

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="false"
+        android:label="Assane AI"
+        android:icon="@drawable/ic_assane_ai"
+        android:roundIcon="@drawable/ic_assane_ai"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AssaneAI">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <!-- Seul le lancement normal depuis l’icône est déclaré. Aucun fichier, lien ou APK externe n’est accepté implicitement. -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>

@@ -1,0 +1,75 @@
+# Blueprint Render pour le backend Assane AI existant.
+# Les valeurs sync:false sont saisies dans le Dashboard Render et ne sont jamais commitées.
+services:
+  - type: web
+    name: assane-ai-api
+    runtime: docker
+    plan: starter
+    region: frankfurt
+    dockerfilePath: ./docker/backend.Dockerfile
+    dockerContext: .
+    healthCheckPath: /health
+    autoDeployTrigger: checksPass
+    disk:
+      name: assane-data
+      mountPath: /app/data
+      sizeGB: 10
+    envVars:
+      - key: ASSANE_ENV
+        value: production
+      - key: ASSANE_HOST
+        value: 0.0.0.0
+      - key: ASSANE_DATA_DIR
+        value: /app/data
+      - key: ASSANE_DATABASE_URL
+        fromDatabase:
+          name: assane-postgres
+          property: connectionString
+      - key: ASSANE_JWT_SECRET
+        generateValue: true
+      - key: ASSANE_PUBLIC_BASE_URL
+        sync: false
+      - key: ASSANE_CORS_ORIGINS
+        sync: false
+      - key: ASSANE_RUNNER_MODE
+        value: docker
+      - key: ASSANE_DOCKER_IMAGE
+        value: assane/android-builder:2026-08
+      - key: ASSANE_SMS_PROVIDER
+        value: unimatrix
+      - key: ASSANE_SMS_LOG_OTP
+        value: "false"
+      - key: UNIMATRIX_BASE_URL
+        value: https://api.unimtx.com
+      - key: UNIMATRIX_ACCESS_KEY_ID
+        sync: false
+      - key: UNIMATRIX_ACCESS_KEY_SECRET
+        sync: false
+      - key: UNIMATRIX_AUTH_MODE
+        value: simple
+      - key: UNIMATRIX_TIMEOUT_SECONDS
+        value: "15"
+      - key: MANUS_API_KEY
+        sync: false
+      - key: MISTRAL_API_KEY
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: STABILITY_API_KEY
+        sync: false
+      - key: DEEPGRAM_API_KEY
+        sync: false
+      - key: GITHUB_TOKEN
+        sync: false
+      - key: VERCEL_TOKEN
+        sync: false
+      - key: CLOUDFLARE_API_TOKEN
+        sync: false
+      - key: GOOGLE_PLAY_SERVICE_ACCOUNT_JSON
+        sync: false
+
+databases:
+  - name: assane-postgres
+    databaseName: assane
+    user: assane
+    plan: basic-256mb

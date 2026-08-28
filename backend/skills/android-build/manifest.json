@@ -1,0 +1,8 @@
+{
+  "id": "android-build",
+  "version": "1.0.0",
+  "triggers": ["android", "apk", "application mobile", "gradle", "kotlin"],
+  "tools": ["read_file", "write_file", "run_command", "build_apk"],
+  "runtime": "android",
+  "outputs": ["apk", "test_report", "source_zip"]
+}

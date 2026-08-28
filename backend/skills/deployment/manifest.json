@@ -1,0 +1,8 @@
+{
+  "id": "deployment",
+  "version": "1.0.0",
+  "triggers": ["publier", "déployer", "vercel", "cloudflare", "github", "partager"],
+  "tools": ["download_artifact", "share_artifact", "deploy"],
+  "runtime": "backend",
+  "outputs": ["deployment_url", "deployment_log", "confirmation_request"]
+}

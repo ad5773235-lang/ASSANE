@@ -1,0 +1,17 @@
+.gradle/
+.idea/
+local.properties
+*.iml
+/build/
+app/build/
+backend/.venv/
+backend/__pycache__/
+backend/.pytest_cache/
+backend/assane.db
+backend/workspaces/*
+backend/artifacts/*
+.env
+*.keystore
+.kotlin/
+__pycache__/
+*.pyc

@@ -1,0 +1,8 @@
+{
+  "id": "inspection",
+  "version": "1.0.0",
+  "triggers": ["inspecter", "lien", "site", "apk", "document", "image", "analyser un fichier"],
+  "tools": ["inspect_url", "inspect_file", "read_file"],
+  "runtime": "sandbox",
+  "outputs": ["inspection_report", "image_preview", "apk_metadata"]
+}

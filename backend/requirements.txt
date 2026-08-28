@@ -1,0 +1,12 @@
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+httpx==0.28.1
+playwright>=1.49,<2
+python-dotenv==1.0.1
+python-multipart==0.0.20
+pydantic==2.10.5
+Pillow>=10,<12
+qrcode[pil]>=7.4,<9
+google-api-python-client>=2.160,<3
+google-auth>=2.37,<3
+psycopg[binary]>=3.2,<4
